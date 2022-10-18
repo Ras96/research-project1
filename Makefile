@@ -17,7 +17,7 @@ mod:
 	@go mod tidy
 
 build:
-	@go build ./...
+	@go build .
 
 lint:
 	@go vet ./...
