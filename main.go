@@ -4,7 +4,6 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
-	"os"
 
 	"github.com/Ras96/research-project1/retriever"
 	"github.com/Ras96/research-project1/retriever/editdistance"
@@ -25,16 +24,14 @@ type simpleData struct {
 }
 
 func main() {
-	kv := makeResponseMap()
+	// プロンプトから応答選択手法と入力文字列を決定
 	r := selectRetrieverMethodInPrompt()
+	req := getRequestMessageInPrompt()
 
-	if len(os.Args) < 2 {
-		fmt.Println("Please input your message.")
-		os.Exit(1)
-	}
+	// 応答選択の基準となる辞書を作成
+	kv := makeResponseMap()
 
-	req := os.Args[1]
-
+	// 選択した応答選択手法で最も適した応答を出力
 	res := r.Retrieve(kv, req)
 	fmt.Println("response:", res)
 }
@@ -84,4 +81,15 @@ func selectRetrieverMethodInPrompt() retriever.Retriever {
 	}
 
 	return r
+}
+
+func getRequestMessageInPrompt() string {
+	p := promptui.Prompt{
+		Label:    "Input your message",
+		Validate: nil,
+	}
+
+	req, _ := p.Run()
+
+	return req
 }
