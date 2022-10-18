@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
+
+	"github.com/Ras96/research-project1/retriever/ed"
 )
 
 const jsonDirName = "corpus/json/init100"
@@ -28,11 +30,10 @@ func main() {
 	}
 
 	req := os.Args[1]
-	if res, ok := kv[req]; ok {
-		fmt.Println(res)
-	} else {
-		fmt.Println("I don't know.")
-	}
+
+	r := ed.NewEditDistanceRetriever()
+	res := r.Retrieve(kv, req)
+	fmt.Println("response:", res)
 }
 
 // JSONファイルを読みこみ、発話に対する返答を記録
