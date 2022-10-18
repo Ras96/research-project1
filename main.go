@@ -89,8 +89,14 @@ func selectRetrieverMethodInPrompt() retriever.Retriever {
 
 func getRequestMessageInPrompt() string {
 	p := promptui.Prompt{
-		Label:    "Input your message",
-		Validate: nil,
+		Label: "Input your message",
+		Validate: func(s string) error {
+			if len(s) == 0 {
+				return fmt.Errorf("Input your message")
+			}
+
+			return nil
+		},
 	}
 
 	req, _ := p.Run()
