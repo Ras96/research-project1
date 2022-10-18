@@ -1,4 +1,4 @@
-package ed
+package editdistance
 
 import (
 	"fmt"

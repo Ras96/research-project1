@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"github.com/Ras96/research-project1/retriever"
-	"github.com/Ras96/research-project1/retriever/ed"
+	"github.com/Ras96/research-project1/retriever/editdistance"
 	"github.com/Ras96/research-project1/retriever/exactmatch"
 	"github.com/manifoldco/promptui"
 )
@@ -80,7 +80,7 @@ func selectRetrieverMethodInPrompt() retriever.Retriever {
 	case methodExactMatch:
 		r = exactmatch.NewExactMatchRetriever()
 	case methodEditDistance:
-		r = ed.NewEditDistanceRetriever()
+		r = editdistance.NewEditDistanceRetriever()
 	}
 
 	return r
