@@ -6,7 +6,10 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/Ras96/research-project1/retriever"
 	"github.com/Ras96/research-project1/retriever/ed"
+	"github.com/Ras96/research-project1/retriever/exactmatch"
+	"github.com/manifoldco/promptui"
 )
 
 const jsonDirName = "corpus/json/init100"
@@ -23,6 +26,7 @@ type simpleData struct {
 
 func main() {
 	kv := makeResponseMap()
+	r := selectRetrieverMethodInPrompt()
 
 	if len(os.Args) < 2 {
 		fmt.Println("Please input your message.")
@@ -31,7 +35,6 @@ func main() {
 
 	req := os.Args[1]
 
-	r := ed.NewEditDistanceRetriever()
 	res := r.Retrieve(kv, req)
 	fmt.Println("response:", res)
 }
@@ -53,4 +56,32 @@ func makeResponseMap() map[string]string {
 	}
 
 	return kv
+}
+
+// 応答選択手法をインタラクティブに選択
+func selectRetrieverMethodInPrompt() retriever.Retriever {
+	const (
+		methodExactMatch   = "Exact Match"
+		methodEditDistance = "Edit Distance"
+	)
+
+	p := promptui.Select{
+		Label: "Which method do you want to use?",
+		Items: []string{
+			methodExactMatch,
+			methodEditDistance,
+		},
+	}
+
+	_, method, _ := p.Run()
+
+	var r retriever.Retriever
+	switch method {
+	case methodExactMatch:
+		r = exactmatch.NewExactMatchRetriever()
+	case methodEditDistance:
+		r = ed.NewEditDistanceRetriever()
+	}
+
+	return r
 }
