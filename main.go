@@ -4,6 +4,7 @@ import (
 	"embed"
 	"encoding/json"
 	"fmt"
+	"os"
 
 	"github.com/Ras96/research-project1/retriever"
 	"github.com/Ras96/research-project1/retriever/editdistance"
@@ -78,6 +79,9 @@ func selectRetrieverMethodInPrompt() retriever.Retriever {
 		r = exactmatch.NewExactMatchRetriever()
 	case methodEditDistance:
 		r = editdistance.NewEditDistanceRetriever()
+	default:
+		fmt.Println("Select an method")
+		os.Exit(1)
 	}
 
 	return r
