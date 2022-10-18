@@ -21,3 +21,9 @@ build:
 
 lint:
 	@go vet ./...
+
+download-corpus:
+	@mkdir -p corpus
+	@wget -O corpus/corpus.zip "https://sites.google.com/site/dialoguebreakdowndetection/chat-dialogue-corpus/projectnextnlp-chat-dialogue-corpus.zip"
+	@unzip corpus/corpus.zip -d corpus
+	@rm corpus/corpus.zip
