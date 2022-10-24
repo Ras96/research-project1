@@ -1,0 +1,36 @@
+name: pages
+
+on:
+  push:
+    branches:
+      - 'main'
+  pull_request:
+
+jobs:
+  marp:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: docker://marpteam/marp-cli:latest
+        with:
+          entrypoint: marp
+          args: -o ./dist/index.html ./docs/slide.md
+        env:
+          MARP_USER: root:root
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: dist
+  deploy:
+    needs:
+      - marp
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/deploy-pages@v1
+        id: deployment
+
