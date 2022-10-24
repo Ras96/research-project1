@@ -15,14 +15,17 @@ jobs:
         with:
           go-version-file: './go.mod'
           cache: true
-      - run: make download-corpus mod build
+      - run: make download-corpus
+      - run: make mod build
 
   lint:
     runs-on: ubuntu-latest
+    needs:
+      - build
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
         with:
           go-version-file: './go.mod'
-          cache: false # disable cache for linting
+          cache: true
       - run: make lint
