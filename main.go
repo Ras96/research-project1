@@ -25,22 +25,22 @@ type simpleData struct {
 }
 
 func main() {
+	// 応答選択の基準となる辞書を作成
+	dict := makeResponseDictionary()
+
 	// プロンプトから応答選択手法と入力文字列を決定
-	r := selectRetrieverMethodInPrompt()
+	r := selectRetrieverMethodInPrompt(dict)
 	req := getRequestMessageInPrompt()
 
-	// 応答選択の基準となる辞書を作成
-	kv := makeResponseMap()
-
 	// 選択した応答選択手法で最も適した応答を出力
-	res := r.Retrieve(kv, req)
+	res := r.Retrieve(req)
 	fmt.Println("response:", res)
 }
 
 // JSONファイルを読みこみ、発話に対する返答を記録
-func makeResponseMap() map[string]string {
+func makeResponseDictionary() retriever.Dictionary {
 	files, _ := jsonFiles.ReadDir(jsonDirName)
-	kv := make(map[string]string)
+	kv := make(retriever.Dictionary)
 	for _, f := range files {
 		bytes, _ := jsonFiles.ReadFile(jsonDirName + "/" + f.Name())
 
@@ -57,7 +57,7 @@ func makeResponseMap() map[string]string {
 }
 
 // 応答選択手法をインタラクティブに選択
-func selectRetrieverMethodInPrompt() retriever.Retriever {
+func selectRetrieverMethodInPrompt(dict retriever.Dictionary) retriever.Retriever {
 	const (
 		methodExactMatch   = "Exact Match"
 		methodEditDistance = "Edit Distance"
@@ -76,9 +76,9 @@ func selectRetrieverMethodInPrompt() retriever.Retriever {
 	var r retriever.Retriever
 	switch method {
 	case methodExactMatch:
-		r = exactmatch.NewExactMatchRetriever()
+		r = exactmatch.NewExactMatchRetriever(dict)
 	case methodEditDistance:
-		r = editdistance.NewEditDistanceRetriever()
+		r = editdistance.NewEditDistanceRetriever(dict)
 	default:
 		fmt.Println("Select an method")
 		os.Exit(1)

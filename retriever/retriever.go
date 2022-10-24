@@ -1,6 +1,8 @@
 package retriever
 
+type Dictionary map[string]string
+
 // リトリーバル方式の雑談システムをインターフェイスで抽象化する
 type Retriever interface {
-	Retrieve(dict map[string]string, req string) string
+	Retrieve(req string) string
 }

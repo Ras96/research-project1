@@ -7,21 +7,23 @@ import (
 	"github.com/agnivade/levenshtein"
 )
 
-type editDistanceRetriever struct{}
-
-// *editDistanceRetrieverはretriever.Retrieverインターフェイスを満たす
-func NewEditDistanceRetriever() retriever.Retriever {
-	return &editDistanceRetriever{}
+type editDistanceRetriever struct{
+	dict retriever.Dictionary
 }
 
-func (r *editDistanceRetriever) Retrieve(dict map[string]string, req string) string {
+// *editDistanceRetrieverはretriever.Retrieverインターフェイスを満たす
+func NewEditDistanceRetriever(dict retriever.Dictionary) retriever.Retriever {
+	return &editDistanceRetriever{dict}
+}
+
+func (r *editDistanceRetriever) Retrieve(req string) string {
 	var (
 		minDist int = 1e9
 		bestRes string
 		ref     string
 	)
 
-	for k, v := range dict {
+	for k, v := range r.dict {
 		d := levenshtein.ComputeDistance(k, req)
 		if d < minDist {
 			minDist = d

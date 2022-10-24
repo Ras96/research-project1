@@ -2,14 +2,16 @@ package exactmatch
 
 import "github.com/Ras96/research-project1/retriever"
 
-type exactmatchRetriever struct{}
-
-func NewExactMatchRetriever() retriever.Retriever {
-	return &exactmatchRetriever{}
+type exactmatchRetriever struct{
+	dict retriever.Dictionary
 }
 
-func (r *exactmatchRetriever) Retrieve(dict map[string]string, req string) string {
-	if res, ok := dict[req]; ok {
+func NewExactMatchRetriever(dict retriever.Dictionary) retriever.Retriever {
+	return &exactmatchRetriever{dict}
+}
+
+func (r *exactmatchRetriever) Retrieve(req string) string {
+	if res, ok := r.dict[req]; ok {
 		return res
 	} else {
 		return "I don't know."
