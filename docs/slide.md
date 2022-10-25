@@ -6,8 +6,7 @@ marp: true
 
 ## リトリーバル方式の雑談システムの試作
 
-発表者: 情報通信系3年 河合輝良
-担当教員: 船越孝太郎
+情報通信系3年 河合輝良 (担当教員: 船越孝太郎)
 
 ---
 
@@ -97,7 +96,7 @@ $ ./research-project1
 Input your message: こんにちは
 response: こんちわー
 
-✔ Input your message: おはよう、元気ですか？█
+Input your message: おはよう、元気ですか？█
 response: 元気です
 
 ...
