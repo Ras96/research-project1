@@ -31,3 +31,6 @@ download-corpus:
 	@wget -O corpus/corpus.zip "https://sites.google.com/site/dialoguebreakdowndetection/chat-dialogue-corpus/projectnextnlp-chat-dialogue-corpus.zip"
 	@unzip corpus/corpus.zip -d corpus
 	@rm corpus/corpus.zip
+
+marp:
+	@docker run --rm -v $(shell pwd):/home/marp/app/ -e LANG=$LANG -e MARP_USER="$(shell id -u):$(shell id -g)" marpteam/marp-cli -o ./dist/index.html ./docs/slide.md

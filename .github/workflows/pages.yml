@@ -14,11 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: docker://marpteam/marp-cli:latest
-        with:
-          args: -o ./dist/index.html ./docs/slide.md
-        env:
-          MARP_USER: root:root
+      - run: make marp
       - uses: actions/upload-pages-artifact@v1
         with:
           path: dist
