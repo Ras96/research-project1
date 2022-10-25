@@ -9,6 +9,7 @@ commands:
 	@echo $(CMDS) | sed 's/\s/\n/g'
 
 all: clean mod build
+all-debug: clean mod build-debugb
 
 clean:
 	@go clean
@@ -18,6 +19,9 @@ mod:
 
 build:
 	@go build .
+
+build-debug:
+	@go build -tags debug .
 
 lint:
 	@go vet ./...

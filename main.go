@@ -1,7 +1,6 @@
 package main
 
 import (
-	"embed"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -12,11 +11,6 @@ import (
 	"github.com/Ras96/research-project1/retriever/tfidf"
 	"github.com/manifoldco/promptui"
 )
-
-const jsonDirName = "corpus/json/init100"
-
-//go:embed corpus/json/init100/*.json
-var jsonFiles embed.FS
 
 // JSONデータから必要なものだけを抽出する構造体
 type simpleData struct {
