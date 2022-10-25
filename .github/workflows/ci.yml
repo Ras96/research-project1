@@ -18,8 +18,8 @@ jobs:
           path: ./corpus
           key: corpus-${{ hashFiles('./corpus/**/*.json') }}
           restore-keys: corpus-
-      - run: make download-corpus
-        if: steps.cache.outputs.cache-hit != 'true'
+      - if: steps.cache.outputs.cache-hit != 'true'
+        run: make download-corpus
 
   build:
     needs:
@@ -30,7 +30,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./corpus
-          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
+          restore-keys: corpus-
       - uses: actions/setup-go@v3
         with:
           go-version-file: './go.mod'
@@ -47,5 +47,5 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./corpus
-          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
+          restore-keys: corpus-
       - uses: golangci/golangci-lint-action@v3
