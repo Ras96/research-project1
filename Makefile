@@ -24,7 +24,7 @@ build-debug:
 	@go build -tags debug .
 
 lint:
-	@go vet ./...
+	@go run github.com/golangci/golangci-lint/cmd/golangci-lint@latest run --fix ./...
 
 download-corpus:
 	@mkdir -p corpus

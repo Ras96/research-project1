@@ -13,7 +13,7 @@ func NewExactMatchRetriever(dict retriever.Dictionary) retriever.Retriever {
 func (r *exactmatchRetriever) Retrieve(req string) string {
 	if res, ok := r.dict[req]; ok {
 		return res
-	} else {
-		return "I don't know."
 	}
+
+	return "I don't know."
 }

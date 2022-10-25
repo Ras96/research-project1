@@ -1,0 +1,11 @@
+linters:
+  enable:
+    # additonal linters
+    - revive
+    - gofmt
+
+run:
+  skip-dirs:
+    - corpus
+    - dist
+    - docs

@@ -11,9 +11,6 @@ import (
 	"github.com/wilcosheh/tfidf/similarity"
 )
 
-type wordString = string
-type docString = string
-
 type tfIdfRetriever struct {
 	f       *tfidf.TFIDF
 	dict    retriever.Dictionary

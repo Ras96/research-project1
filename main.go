@@ -46,7 +46,7 @@ func makeResponseDictionary() retriever.Dictionary {
 		bytes, _ := jsonFiles.ReadFile(jsonDirName + "/" + f.Name())
 
 		var data simpleData
-		json.Unmarshal(bytes, &data)
+		_ = json.Unmarshal(bytes, &data)
 
 		turns := data.Turns
 		for i := 0; i+1 < len(turns); i++ {
