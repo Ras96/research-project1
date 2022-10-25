@@ -36,7 +36,6 @@ func (r *editDistanceRetriever) Retrieve(req string) string {
 	fmt.Println("best response:", bestRes)
 	fmt.Println("edit distance:", minDist)
 	fmt.Println("reference    :", ref)
-	fmt.Println()
 
 	return bestRes
 }

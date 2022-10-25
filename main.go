@@ -27,6 +27,7 @@ func main() {
 		// 選択した応答選択手法で最も適した応答を出力
 		res := r.Retrieve(req)
 		fmt.Println("response:", res)
+		fmt.Println()
 	}
 }
 
@@ -71,6 +72,7 @@ func selectRetrieverMethodInPrompt(dict retriever.Dictionary) retriever.Retrieve
 			methodEditDistance,
 			methodTfIdf,
 		},
+		HideHelp: true,
 	}
 
 	_, method, _ := p.Run()

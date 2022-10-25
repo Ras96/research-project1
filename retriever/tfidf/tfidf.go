@@ -47,7 +47,6 @@ func (r *tfIdfRetriever) Retrieve(req string) string {
 	fmt.Println("maxScore      :", maxScore)
 	fmt.Println("maxDoc        :", maxDoc)
 	fmt.Println("maxDocResponse:", r.dict[maxDoc])
-	fmt.Println()
 
 	return r.dict[maxDoc]
 }
