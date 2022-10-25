@@ -16,7 +16,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./corpus
-          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
+          key: ${{ runners.os }}-corpus-${{ github.sha }}
 
   build:
     needs:
@@ -27,8 +27,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./corpus
-          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
-          restore-keys: corpus-
+          key: ${{ runners.os }}-corpus-${{ github.sha }}
       - uses: actions/setup-go@v3
         with:
           go-version-file: './go.mod'
@@ -45,6 +44,5 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./corpus
-          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
-          restore-keys: corpus-
+          key: ${{ runners.os }}-corpus-${{ github.sha }}
       - uses: golangci/golangci-lint-action@v3
