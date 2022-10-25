@@ -1,4 +1,6 @@
 {
   "go.formatTool": "gofmt",
-  "go.lintTool": "staticcheck"
+  "go.lintTool": "staticcheck",
+  "markdown-preview-enhanced.hideDefaultVSCodeMarkdownPreviewButtons": false,
+  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": false
 }
