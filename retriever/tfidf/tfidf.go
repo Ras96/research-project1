@@ -15,11 +15,12 @@ type wordString = string
 type docString = string
 
 type tfIdfRetriever struct {
-	f    *tfidf.TFIDF
-	dict retriever.Dictionary
+	f       *tfidf.TFIDF
+	dict    retriever.Dictionary
+	isDebug bool
 }
 
-func NewTfIdfRetriever(dict retriever.Dictionary) retriever.Retriever {
+func NewTfIdfRetriever(dict retriever.Dictionary, isDebug bool) retriever.Retriever {
 	t := NewMyTokenizer()
 	f := tfidf.NewTokenizer(t)
 
@@ -27,7 +28,7 @@ func NewTfIdfRetriever(dict retriever.Dictionary) retriever.Retriever {
 		f.AddDocs(doc)
 	}
 
-	return &tfIdfRetriever{f, dict}
+	return &tfIdfRetriever{f, dict, isDebug}
 }
 
 func (r *tfIdfRetriever) Retrieve(req string) string {
@@ -44,9 +45,11 @@ func (r *tfIdfRetriever) Retrieve(req string) string {
 		}
 	}
 
-	fmt.Println("maxScore      :", maxScore)
-	fmt.Println("maxDoc        :", maxDoc)
-	fmt.Println("maxDocResponse:", r.dict[maxDoc])
+	if r.isDebug {
+		fmt.Println("maxScore      :", maxScore)
+		fmt.Println("maxDoc        :", maxDoc)
+		fmt.Println("maxDocResponse:", r.dict[maxDoc])
+	}
 
 	return r.dict[maxDoc]
 }

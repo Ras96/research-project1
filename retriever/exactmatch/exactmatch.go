@@ -2,7 +2,7 @@ package exactmatch
 
 import "github.com/Ras96/research-project1/retriever"
 
-type exactmatchRetriever struct{
+type exactmatchRetriever struct {
 	dict retriever.Dictionary
 }
 

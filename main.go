@@ -82,9 +82,9 @@ func selectRetrieverMethodInPrompt(dict retriever.Dictionary) retriever.Retrieve
 	case methodExactMatch:
 		r = exactmatch.NewExactMatchRetriever(dict)
 	case methodEditDistance:
-		r = editdistance.NewEditDistanceRetriever(dict)
+		r = editdistance.NewEditDistanceRetriever(dict, isDebug)
 	case methodTfIdf:
-		r = tfidf.NewTfIdfRetriever(dict)
+		r = tfidf.NewTfIdfRetriever(dict, isDebug)
 	default:
 		fmt.Println("Select an method")
 		os.Exit(1)
