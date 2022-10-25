@@ -16,7 +16,7 @@ jobs:
         id: cache
         with:
           path: ./corpus
-          key: ${{ runners.os }}-corpus-${{ github.sha }}
+          key: ${{ runner.os }}-corpus-${{ github.sha }}
       - run: make download-corpus
         if: steps.cache.outputs.cache-hit != 'true'
 
@@ -29,7 +29,7 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./corpus
-          key: ${{ runners.os }}-corpus-${{ github.sha }}
+          key: ${{ runner.os }}-corpus-${{ github.sha }}
       - uses: actions/setup-go@v3
         with:
           go-version-file: './go.mod'
@@ -46,5 +46,5 @@ jobs:
       - uses: actions/cache@v3
         with:
           path: ./corpus
-          key: ${{ runners.os }}-corpus-${{ github.sha }}
+          key: ${{ runner.os }}-corpus-${{ github.sha }}
       - uses: golangci/golangci-lint-action@v3
