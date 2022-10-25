@@ -2,5 +2,8 @@
   "go.formatTool": "gofmt",
   "go.lintTool": "golangci-lint",
   "markdown-preview-enhanced.hideDefaultVSCodeMarkdownPreviewButtons": false,
-  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": false
+  "markdown-preview-enhanced.automaticallyShowPreviewOfMarkdownBeingEdited": false,
+  "markdownlint.config": {
+    "single-h1": false
+  }
 }
