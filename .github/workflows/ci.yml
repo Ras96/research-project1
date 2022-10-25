@@ -17,6 +17,7 @@ jobs:
         with:
           path: ./corpus
           key: corpus-${{ hashFiles('./corpus/**/*.json') }}
+          restore-keys: corpus-
       - run: make download-corpus
         if: steps.cache.outputs.cache-hit != 'true'
 
