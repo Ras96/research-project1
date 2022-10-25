@@ -13,7 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - run: make download-corpus
-      - uses: ./.github/actions/cache-corpus
+      - uses: actions/cache@v3
+        with:
+          path: ./corpus
+          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
 
   build:
     needs:
@@ -25,7 +28,10 @@ jobs:
         with:
           go-version-file: './go.mod'
           cache: true
-      - uses: ./.github/actions/cache-corpus
+      - uses: actions/cache@v3
+        with:
+          path: ./corpus
+          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
       - run: make mod
       - run: make build
 
@@ -35,5 +41,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: ./.github/actions/cache-corpus
+      - uses: actions/cache@v3
+        with:
+          path: ./corpus
+          key: corpus-${{ hashFiles('./corpus/**/*.json') }}
       - uses: golangci/golangci-lint-action@v3
