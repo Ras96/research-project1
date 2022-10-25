@@ -110,7 +110,7 @@ chat-dialogue-corpus
 - IDF: log((1+総文書数) / (1+単語`w`を含む文書数))
   - IDF([A,B], "です") = log((1+2) / (1+2)) = 0
   - どの文書にも出現する単語は重要ではない
-- 発話とDBの中の発話のTF\*IDFのコサイン距離が最小になるものを選択
+- 発話とDBの中の発話のTF\*IDFのコサイン類似度が最大になるものを選択
 
 ---
 
@@ -157,7 +157,7 @@ response: 元気です
   - TF\*IDF指標の計算に使用
 - [wilcosheh/tfidf](https://github.com/wilcosheh/tfidf)
   - TF\*IDF指標の計算
-  - 発話とのコサイン距離の計算
+  - 発話とのコサイン類似度の計算
 
 ---
 
@@ -257,7 +257,7 @@ func (r *tfIdfRetriever) Retrieve(req string) string {
   maxDoc := ""
   for doc := range r.dict {
     docW := r.f.Cal(doc) // 応答のTF*IDFを計算
-    score := similarity.Cosine(docW, reqW) // コサイン距離を計算
+    score := similarity.Cosine(docW, reqW) // コサイン類似度を計算
     if score > maxScore { // 最大値を更新
       maxScore = score; maxDoc = doc
     }
