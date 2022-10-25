@@ -143,11 +143,11 @@ response: 元気です
 - レポジトリ: <https://github.com/Ras96/research-project1>
 - Go言語を使用
 - [manifoldco/promptui](https://github.com/manifoldco/promptui)を使いインタラクティブなCLIを作成
-- 指標の計算にはライブラリを用いる → 次ページ
+- 指標の計算には外部パッケージ(ライブラリ)を用いる → 次ページ
 
 ---
 
-## 使用ライブラリ (Github)
+## 使用パッケージ (Github)
 
 - [agnivade/levenshtein](https://github.com/agnivade/levenshtein)
   - 編集距離の計算
