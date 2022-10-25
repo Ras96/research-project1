@@ -188,6 +188,10 @@ func main() {
 
 ## `r.Retrieve(req)`の定義
 
+> retrieve:〈情報を〉引き出す，検索する.
+> リトリーバル(retrival)の動詞形
+> (出典: <https://ejje.weblio.jp/>)
+
 ```go
 package retriever
 
@@ -196,7 +200,8 @@ type Retriever interface {
 }
 ```
 
-各手法の`Retrieve`メソッドを実装することで手法の切り替えが可能に
+インターフェイスのメソッドとして定義されている。
+各手法で`Retrieve`メソッドを実装することで手法の切り替えが可能になる。
 
 ---
 
