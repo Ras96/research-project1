@@ -7,7 +7,17 @@ on:
   pull_request:
 
 jobs:
+  download-corpus:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - run: make download-corpus
+      - uses: ./.github/actions/cache-corpus
+
   build:
+    needs:
+      - download-corpus
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,13 +25,17 @@ jobs:
         with:
           go-version-file: './go.mod'
           cache: true
-      - run: make download-corpus
+      - uses: ./.github/actions/cache-corpus
       - run: make mod
       - run: make build
+
   lint:
+    needs:
+      - download-corpus
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/actions/cache-corpus
       - uses: golangci/golangci-lint-action@v3
         with:
           version: latest
