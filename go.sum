@@ -10,7 +10,17 @@ github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1 h1:q763qf9huN11kDQavWs
 github.com/chzyer/test v0.0.0-20180213035817-a1ea475d72b1/go.mod h1:Q3SI9o4m/ZMnBNeIyt5eFwwo7qiLfzFZmjNmxjkiQlU=
 github.com/dgryski/trifles v0.0.0-20200323201526-dd97f9abfb48 h1:fRzb/w+pyskVMQ+UbP35JkH8yB7MYb4q/qhBarqZE6g=
 github.com/dgryski/trifles v0.0.0-20200323201526-dd97f9abfb48/go.mod h1:if7Fbed8SFyPtHLHbg49SI7NAdJiC5WIA09pe59rfAA=
+github.com/ikawaha/kagome-dict v1.0.7 h1:W31gx2VH0LQxrYRn9yDz2pqpY36UxcxqEHqQ4U9n0vA=
+github.com/ikawaha/kagome-dict v1.0.7/go.mod h1:URXr0HwDcdBPNDn1uw8hnem4zhildeAeCXuTWQFA7NA=
+github.com/ikawaha/kagome-dict/ipa v1.0.9 h1:iQITqQKpYtby83z6IglEKozV2Arbv70JHxIdKf4RRMA=
+github.com/ikawaha/kagome-dict/ipa v1.0.9/go.mod h1:sBGF+9wBZR9NMMY9Ge8ULgntX1pLx4xQgjD8TOvHpCI=
+github.com/ikawaha/kagome/v2 v2.8.3 h1:dndfZQ45CLiJDsZkaJk8G4+P4MTBVjjvZJoD6u63nso=
+github.com/ikawaha/kagome/v2 v2.8.3/go.mod h1:5VSNA81D29OmGBVJO3FECYpcIcuE10yxJRLx+n7Vj44=
 github.com/manifoldco/promptui v0.9.0 h1:3V4HzJk1TtXW1MTZMP7mdlwbBpIinw3HztaIlYthEiA=
 github.com/manifoldco/promptui v0.9.0/go.mod h1:ka04sppxSGFAtxX0qhlYQjISsg9mR4GWtQEhdbn6Pgg=
+github.com/wilcosheh/tfidf v0.0.0-20170517095906-2847b6a5524e h1:Yq6K2NHO31+ImN1deqaOo2U4gMarmjIJ80ULQOsM64k=
+github.com/wilcosheh/tfidf v0.0.0-20170517095906-2847b6a5524e/go.mod h1:BDtD9ZfqP8PcWFAmISOdGe2G3zXtsuG3HnigSC1ZSaM=
+github.com/yanyiwu/gojieba v1.2.0 h1:axzRPH9jZwMc8rsXUjRuQ0lMjCrbZ6haz38pPtJ8c5M=
+github.com/yanyiwu/gojieba v1.2.0/go.mod h1:54wkP7sMJ6bklf7yPl6F+JG71dzVUU1WigZbR47nGdY=
 golang.org/x/sys v0.0.0-20181122145206-62eef0e2fa9b h1:MQE+LT/ABUuuvEZ+YQAMSXindAdUh7slEmAkup74op4=
 golang.org/x/sys v0.0.0-20181122145206-62eef0e2fa9b/go.mod h1:STP8DvDyc/dI5b8T5hshtkjS+E42TnysNCUPdjciGhY=

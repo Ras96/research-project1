@@ -9,6 +9,7 @@ import (
 	"github.com/Ras96/research-project1/retriever"
 	"github.com/Ras96/research-project1/retriever/editdistance"
 	"github.com/Ras96/research-project1/retriever/exactmatch"
+	"github.com/Ras96/research-project1/retriever/tfidf"
 	"github.com/manifoldco/promptui"
 )
 
@@ -61,6 +62,7 @@ func selectRetrieverMethodInPrompt(dict retriever.Dictionary) retriever.Retrieve
 	const (
 		methodExactMatch   = "Exact Match"
 		methodEditDistance = "Edit Distance"
+		methodTfIdf        = "TF*IDF"
 	)
 
 	p := promptui.Select{
@@ -68,6 +70,7 @@ func selectRetrieverMethodInPrompt(dict retriever.Dictionary) retriever.Retrieve
 		Items: []string{
 			methodExactMatch,
 			methodEditDistance,
+			methodTfIdf,
 		},
 	}
 
@@ -79,6 +82,8 @@ func selectRetrieverMethodInPrompt(dict retriever.Dictionary) retriever.Retrieve
 		r = exactmatch.NewExactMatchRetriever(dict)
 	case methodEditDistance:
 		r = editdistance.NewEditDistanceRetriever(dict)
+	case methodTfIdf:
+		r = tfidf.NewTfIdfRetriever(dict)
 	default:
 		fmt.Println("Select an method")
 		os.Exit(1)
