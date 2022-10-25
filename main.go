@@ -12,13 +12,6 @@ import (
 	"github.com/manifoldco/promptui"
 )
 
-// JSONデータから必要なものだけを抽出する構造体
-type simpleData struct {
-	Turns []struct {
-		Utterance string `json:"utterance"`
-	} `json:"turns"`
-}
-
 func main() {
 	// 応答選択の基準となる辞書を作成
 	dict := makeResponseDictionary()
@@ -30,6 +23,13 @@ func main() {
 	// 選択した応答選択手法で最も適した応答を出力
 	res := r.Retrieve(req)
 	fmt.Println("response:", res)
+}
+
+// JSONデータから必要なものだけを抽出する構造体
+type simpleData struct {
+	Turns []struct {
+		Utterance string `json:"utterance"`
+	} `json:"turns"`
 }
 
 // JSONファイルを読みこみ、発話に対する返答を記録
