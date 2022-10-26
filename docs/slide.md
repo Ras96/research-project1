@@ -26,7 +26,7 @@ marp: true
 - GUIを使用し、ノーコードで作ることが可能
 - 今回は「連絡先をやんわりと断る」というテーマでシナリオを作成
 
-![sunaba1](./sunaba1.png)![sunaba2](./sunaba2.png)
+![sunaba1](https://github.com/Ras96/research-project1/blob/main/docs/sunaba1.png?raw=true) ![sunaba2](https://github.com/Ras96/research-project1/blob/main/docs/sunaba2.png?raw=true)
 
 ---
 
