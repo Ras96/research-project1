@@ -183,6 +183,34 @@ response: 元気です
 
 ---
 
+## 結果
+
+編集距離
+
+```bash
+$ ./research-project1
+✔ Edit Distance
+Input your message: 今日も元気かい？
+response: 元気です (dist=5, ref=元気？)
+
+Input your message: 最近寒くなってきたね
+response: 熱中症に気をつけか？？ (dist=4, ref=最近涼しくなったね)
+```
+
+TF\*IDF指標
+
+```bash
+$ ./research-project1
+✔ TF*IDF
+Input your message: 今日も元気かい？
+response: そうです (score=0.794234, ref=そうかい)
+
+Input your message: 最近寒くなってきたね
+response: 海に行かないんですね？ (score=0.869657, ref=でも少し寒くなってきましたよ。)
+```
+
+---
+
 ## 課題
 
 - 今回用いた外部パッケージには最終更新が5年以上前のものもあるので自分で実装出来ればなお良かった
