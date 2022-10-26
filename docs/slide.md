@@ -4,9 +4,29 @@ marp: true
 
 # 2022年度研究プロジェクト 前半発表
 
-## リトリーバル方式の雑談システムの試作
+- SUNABAによる対話システムの実装
+- リトリーバル方式の雑談システムの試作
 
 情報通信系3年 河合輝良 (担当教員: 船越孝太郎)
+
+---
+
+## 対話システムとは
+
+自然言語を用いて人間と会話ができるようにしたシステム
+
+- SUNABAを用いた対話システムの実装
+- リトリーバル方式の応答選択手法を用いた雑談システムの試作
+
+---
+
+## SUNABA
+
+- ドコモが開発したチャットボット製作サービス
+- GUIを使用し、ノーコードで作ることが可能
+- 今回は「連絡先をやんわりと断る」というテーマでシナリオを作成
+
+![sunaba1](./sunaba1.png)![sunaba2](./sunaba2.png)
 
 ---
 
@@ -71,12 +91,14 @@ chat-dialogue-corpus
 
 - 応答選択手法(発話に対して最適な応答をDBから選択する手法)が必要
 - どのように選択すればよいか？ = どのような評価指標を用いるか？
-  - 完全一致
-  - 編集距離
-  - TF\*IDF指標
-  - word2vec
-  - BERT
-  - ...
+  - 次ページから解説
+    - 完全一致
+    - 編集距離
+    - TF\*IDF指標
+  - 今回は扱わないがニューラルネットワークを用いた、よりモダンなもの
+    - word2vec
+    - BERT
+    - ...
 
 ---
 
@@ -158,119 +180,6 @@ response: 元気です
 - [wilcosheh/tfidf](https://github.com/wilcosheh/tfidf)
   - TF\*IDF指標の計算
   - 発話とのコサイン類似度の計算
-
----
-
-## Goによる実装
-
-```go
-package main
-
-import "fmt"
-
-func main() {
-  // 応答選択の基準となる辞書を作成
-  dict := makeResponseDictionary()
-  // プロンプトから応答選択手法を決定
-  r := selectRetrieverMethodInPrompt(dict)
-
-  for {
-    // プロンプトから入力文字列を決定
-    req := getRequestMessageInPrompt()
-    // 選択した応答選択手法で最も適した応答を出力
-    res := r.Retrieve(req) // 選択した手法のRetrieveメソッドが呼び出される
-    fmt.Println("response:", res)
-  }
-}
-```
-
----
-
-## `r.Retrieve(req)`の定義
-
-> retrieve:〈情報を〉引き出す，検索する.
-> リトリーバル(retrival)の動詞形
-> (出典: <https://ejje.weblio.jp/>)
-
-```go
-package retriever
-
-type Retriever interface {
-  Retrieve(req string) string
-}
-```
-
-インターフェイスのメソッドとして定義されている。
-各手法で`Retrieve`メソッドを実装することで手法の切り替えが可能になる。
-
----
-
-## `r.Retrieve(req)` - 完全一致編
-
-```go
-package exactmatch
-
-type exactmatchRetriever struct {
-  dict retriever.Dictionary
-}
-
-func (r *exactmatchRetriever) Retrieve(req string) string {
-  if res, ok := r.dict[req]; ok {
-    return res
-  }
-
-  return "I don't know."
-}
-```
-
----
-
-## `r.Retrieve(req)` - 編集距離編
-
-```go
-package editdistance
-
-func (r *editDistanceRetriever) Retrieve(req string) string {
-  var (
-    minDist int = 1e9
-    bestRes string
-    ref     string
-  )
-
-  for k, v := range r.dict {
-    d := levenshtein.ComputeDistance(k, req) // 編集距離を計算
-    if d < minDist { // 最小値を更新
-      minDist = d; bestRes = v; ref = k
-    }
-  }
-
-  return bestRes
-}
-```
-
----
-
-## `r.Retrieve(req)` - TF\*IDF編
-
-```go
-package tfidf
-
-func (r *tfIdfRetriever) Retrieve(req string) string {
-  reqW := r.f.Cal(req) // 発話のTF*IDFを計算
-
-  maxScore := 0.0
-  maxDoc := ""
-  for doc := range r.dict {
-    docW := r.f.Cal(doc) // 応答のTF*IDFを計算
-    score := similarity.Cosine(docW, reqW) // コサイン類似度を計算
-    if score > maxScore { // 最大値を更新
-      maxScore = score; maxDoc = doc
-    }
-  }
-
-  return r.dict[maxDoc]
-}
-```
 
 ---
 
