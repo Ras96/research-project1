@@ -40,5 +40,5 @@ func (r *editDistanceRetriever) Retrieve(req string) string {
 		fmt.Println("reference    :", ref)
 	}
 
-	return bestRes
+	return fmt.Sprintf("%s (dist=%d, ref=%s)", bestRes, minDist, ref)
 }

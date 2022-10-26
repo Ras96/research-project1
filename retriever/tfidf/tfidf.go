@@ -48,7 +48,7 @@ func (r *tfIdfRetriever) Retrieve(req string) string {
 		fmt.Println("maxDocResponse:", r.dict[maxDoc])
 	}
 
-	return r.dict[maxDoc]
+	return fmt.Sprintf("%s (score=%f, ref=%s)", r.dict[maxDoc], maxScore, maxDoc)
 }
 
 type myTokenizer struct {
