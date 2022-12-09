@@ -1,4 +1,4 @@
-module github.com/Ras96/research-project1
+module github.com/ras0q/research-project1
 
 go 1.18
 

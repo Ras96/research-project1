@@ -3,9 +3,9 @@ package tfidf
 import (
 	"fmt"
 
-	"github.com/Ras96/research-project1/retriever" // mecab-ipadic-2.7.0-20070801
 	"github.com/ikawaha/kagome-dict/ipa"
 	"github.com/ikawaha/kagome/v2/tokenizer"
+	"github.com/ras0q/research-project1/retriever" // mecab-ipadic-2.7.0-20070801
 	"github.com/wilcosheh/tfidf"
 	"github.com/wilcosheh/tfidf/seg"
 	"github.com/wilcosheh/tfidf/similarity"

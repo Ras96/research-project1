@@ -3,8 +3,8 @@ package editdistance
 import (
 	"fmt"
 
-	"github.com/Ras96/research-project1/retriever"
 	"github.com/agnivade/levenshtein"
+	"github.com/ras0q/research-project1/retriever"
 )
 
 type editDistanceRetriever struct {

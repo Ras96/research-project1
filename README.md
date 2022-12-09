@@ -7,9 +7,9 @@
 Goを用いてインストールできます
 
 ```bash
-go install github.com/Ras96/research-project1@latest
+go install github.com/ras0q/research-project1@latest
 ```
 
 ## 資料
 
-- [スライド資料](https://ras96.github.io/research-project1)
+- [スライド資料](https://ras0q.github.io/research-project1)

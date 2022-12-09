@@ -32,7 +32,7 @@ marp: true
 - GUIを使用し、ノーコードで作ることが可能
 - 今回は「連絡先をやんわりと断る」というテーマでシナリオを作成
 
-![sunaba1](https://github.com/Ras96/research-project1/blob/main/docs/sunaba1.png?raw=true) ![sunaba2](https://github.com/Ras96/research-project1/blob/main/docs/sunaba2.png?raw=true)
+![sunaba1](https://github.com/ras0q/research-project1/blob/main/docs/sunaba1.png?raw=true) ![sunaba2](https://github.com/ras0q/research-project1/blob/main/docs/sunaba2.png?raw=true)
 
 <!-- 前半ではSUNABAを用いて「連絡先をやんわりと断る」というシナリオを作成しました。
 SUNABAは、ドコモが開発したチャットボット製作サービスで、GUIを用いてノーコードで作ることもできます。 -->
@@ -201,7 +201,7 @@ response: 元気です
 
 ## 方針
 
-- レポジトリ: <https://github.com/Ras96/research-project1>
+- レポジトリ: <https://github.com/ras0q/research-project1>
 - Go言語を使用
 - [manifoldco/promptui](https://github.com/manifoldco/promptui)を使いインタラクティブなCLIを作成
 - 指標の計算には外部パッケージ(ライブラリ)を用いる → 次ページ

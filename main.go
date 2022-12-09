@@ -6,11 +6,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/Ras96/research-project1/retriever"
-	"github.com/Ras96/research-project1/retriever/editdistance"
-	"github.com/Ras96/research-project1/retriever/exactmatch"
-	"github.com/Ras96/research-project1/retriever/tfidf"
 	"github.com/manifoldco/promptui"
+	"github.com/ras0q/research-project1/retriever"
+	"github.com/ras0q/research-project1/retriever/editdistance"
+	"github.com/ras0q/research-project1/retriever/exactmatch"
+	"github.com/ras0q/research-project1/retriever/tfidf"
 )
 
 func main() {
